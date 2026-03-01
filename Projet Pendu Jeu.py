@@ -40,8 +40,7 @@ def verif_gain(gain,mot):
         return 0
 
 def clear_board():
-    c1= os.system("cls") # Windows
-    c1 = os.system("clear") # De type Unix
+    os.system("clear")
 
 while jeu == 1:
     gain = 0
@@ -58,6 +57,7 @@ while jeu == 1:
         print(f"Lettres deja dites : {" ".join(lettre_fausse)}")
         print(f"Le mot : {(" ".join(tab_mot))}")
         lettre = try_lettre(mot)
+        clear_board()
         if lettre in mot:
             print("BON CHOIX !")
             for j in range(len(mot)):
