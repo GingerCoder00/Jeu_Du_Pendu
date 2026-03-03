@@ -1,79 +1,84 @@
-# Créé par leguludec, le 06/09/2025 en Python 3.7
-from random import randint
 import os
+import time
+class Game:
+    def __init__(self):
+        self.running = True
+        self.vie = 10
+        self.mot = ""
+        self.tab_mot = []
+        self.lettre_dites = []
 
-jeu = 1
-win1 = 0
-win2 = 0
-
-def crea_mot():
-    print("Le joueur qui va devinez le mot va devoir fermer les yeux")
-    print("L'autre va pendant ce temps entrer un mot")
-    mot = input("Votre mot : ")
-    print("Mot recu !!!")
-    return mot.lower()
+    def crea_mot(self):
+        print("Le joueur qui va devinez le mot va devoir fermer les yeux")
+        print("L'autre va pendant ce temps entrer un mot")
+        return input("Votre mot : ").lower()
     
-def try_lettre(mot):
-    print("...................................................")
-    lettre = input("Entrez une lettre : ").lower()
-    return lettre.lower()
-
-def affichage(mot):
-    print("...................................................")
-    tab_mot = ["_" for i in range(len(mot))]
-    return tab_mot
-
-def verif_vie(vie,mot):
-    if vie <= 0:
-        print("Vous avez perdu ...")
-        print(f"Le mot etait : {mot}")
-        return 1
-    else:
-        return 0
+    def remplissage_mot(self):
+        self.tab_mot = ["_" for i in range(len(self.mot))]
     
-def verif_gain(gain,mot):
-    if gain >= len(mot):
-        print("SUPER VOUS AVEZ GAGNE !!!")
-        print(f"Le mot etait bien : {mot.upper()} !")
-        return 1
-    else:
-        return 0
+    def try_lettre(self):
+        lettre = input("Entrez une lettre : ").lower()
+        return lettre.lower()
+    
+    def verif_try(self, lettre:str):
+        if lettre not in self.lettre_dites:
+            self.lettre_dites.append(lettre)
+        else:
+            print("Lettres deja dites")
+            time.sleep(1.5)
+            return
 
-def clear_board():
-    os.system("clear")
-
-while jeu == 1:
-    gain = 0
-    vie = 10
-    lettre_fausse = []
-    print("Jeu se jouant a 2 joueur")
-    print("L'un va choisir un mot et l'autre va essayer de le trouver")
-    mot = crea_mot()
-    clear_board()
-    print("Maintenant que le mot est choisit, le premier joueur va essayer de le deviner")
-    tab_mot = affichage(mot)
-    while win1 == 0 and win2 == 0:
-        print(f"Il vous reste : {vie} chances")
-        print(f"Lettres deja dites : {" ".join(lettre_fausse)}")
-        print(f"Le mot : {(" ".join(tab_mot))}")
-        lettre = try_lettre(mot)
-        clear_board()
-        if lettre in mot:
+        if lettre in self.mot:
             print("BON CHOIX !")
-            for j in range(len(mot)):
-                if mot[j] == lettre:
-                    if lettre not in tab_mot:
-                        gain += mot.count(lettre)
-                    tab_mot[j] = lettre
-                    if lettre not in lettre_fausse:
-                        lettre_fausse.append(lettre)
+            for test in range(len(self.mot)):
+                if self.mot[test] == lettre:
+                    self.tab_mot[test] = lettre
         else:
             print("MAUVAIS CHOIX !")
-            if lettre not in lettre_fausse:
-                lettre_fausse.append(lettre)
-                vie -= 1
-        win1 = verif_vie(vie,mot)
-        win2 = verif_gain(gain,mot)
-    choix2 = int(input("Voulez vous rejouer ? (Tapez 1 pour oui ou 2 pour non) : "))
-    if choix2 == 2:
-        jeu = 0    
+            self.vie -= 1
+        time.sleep(1.5)
+    
+    def affichage(self):
+        print(f"Il vous reste : {self.vie} chances")
+        print(f"Lettres deja dites : {" ".join(self.lettre_dites)}")
+        print(f"Le mot : {(" ".join(self.tab_mot))}")
+    
+    def verif_vie(self):
+        if self.vie <= 0:
+            return True
+        else:
+            return False
+
+    def clear_board(self):
+        os.system("clear")
+
+    def run(self):
+
+        while self.running :
+            print("Jeu se jouant a 2 joueur")
+            print("L'un va choisir un mot et l'autre va essayer de le trouver")
+            self.mot = self.crea_mot()
+            self.remplissage_mot()
+            print("Maintenant que le mot est choisit, le premier joueur va essayer de le deviner")
+            while not self.verif_vie() and "_" in self.tab_mot:
+                self.clear_board()
+                print("........................................................................")
+                self.affichage()
+                lettre = self.try_lettre()
+                self.verif_try(lettre[0])
+                print("........................................................................")
+
+            self.clear_board()
+            print("........................................................................")
+            if self.vie <= 0:
+                print("Tu as perdu...")
+                print(f"Le mot etait : {self.mot}")
+            else:
+                print("WIN !!!")
+            
+            if input("Recommencer ? <O>ui ou <N>on : ").upper() == "N":
+                print("........................................................................")
+                self.running = False
+
+if __name__ == "__main__":
+    Game().run()
