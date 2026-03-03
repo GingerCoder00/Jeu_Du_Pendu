@@ -3,7 +3,7 @@ Ce repo contient un programme de jeu du pendu dans une console
 
 MIT License
 
-Copyright (c) 2026 [Ton Nom]
+Copyright (c) 2026 LE GULUDEC ARTHUR
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
