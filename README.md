@@ -56,6 +56,7 @@ Le mot etait bien : PYTHON !
 pendu/
 │
 ├── pendu.py    # Script principal
+├── LICENSE     # LICENSE du projet
 └── README.md
 ```
 
