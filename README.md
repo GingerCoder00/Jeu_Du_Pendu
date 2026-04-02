@@ -1,4 +1,4 @@
-# 🎯 Pendu — Jeu à 2 joueurs
+# Pendu — Jeu à 2 joueurs
 
 Un jeu du **Pendu en mode local 2 joueurs**, entièrement en Python.  
 Un joueur choisit secrètement un mot, l'autre tente de le deviner  
@@ -6,7 +6,7 @@ lettre par lettre avant d'épuiser ses **10 chances**.
 
 ---
 
-## 🎮 Comment jouer
+## Comment jouer
 
 1. **Joueur 1** entre un mot secret (l'autre ferme les yeux 👀)
 2. L'écran est effacé automatiquement pour garder le secret
@@ -17,7 +17,7 @@ lettre par lettre avant d'épuiser ses **10 chances**.
 
 ---
 
-## 🚀 Lancer le jeu
+## Lancer le jeu
 
 **Prérequis :** Python 3.7+  — aucune dépendance externe
 ```bash
@@ -28,7 +28,7 @@ python pendu.py
 
 ---
 
-## 📊 Exemple de partie
+## Exemple de partie
 ```
 Jeu se jouant a 2 joueurs
 L'un va choisir un mot et l'autre va essayer de le trouver
@@ -61,7 +61,7 @@ pendu/
 
 ---
 
-## ⚙️ Fonctionnalités
+## Fonctionnalités
 
 - Saisie sécurisée du mot secret avec effacement automatique de l'écran (Windows & Unix)
 - Suivi des lettres déjà proposées (bonnes et mauvaises)
@@ -71,7 +71,7 @@ pendu/
 
 ---
 
-## 🛠️ Pistes d'amélioration
+## Pistes d'amélioration
 
 - Ajouter un mode solo avec une liste de mots aléatoires
 - Afficher un vrai dessin du pendu étape par étape
@@ -80,12 +80,12 @@ pendu/
 
 ---
 
-## 👤 Auteur
+## Auteur
 
-Créé par **leguludec** — Septembre 2025
+Créé par **LE GULUDEC ARTHUR** — Septembre 2025
 
 ---
 
-## 📜 Licence
+## Licence
 
 MIT — libre d'utilisation, de modification et de partage.
