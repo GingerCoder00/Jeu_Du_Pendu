@@ -8,7 +8,7 @@ lettre par lettre avant d'épuiser ses **10 chances**.
 
 ## Comment jouer
 
-1. **Joueur 1** entre un mot secret (l'autre ferme les yeux 👀)
+1. **Joueur 1** entre un mot secret (l'autre ferme les yeux)
 2. L'écran est effacé automatiquement pour garder le secret
 3. **Joueur 2** propose des lettres une par une
 4. Chaque mauvaise lettre coûte une vie — il en a **10 au total**
